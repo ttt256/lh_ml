@@ -2,10 +2,12 @@ import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
+from naive_Bayes_discrete_update import log
 
 
 # 二分类的多项式型朴素贝叶斯模型
 class Model():
+    @log
     def __init__(self, X_train, y_train):
         self.X_train = X_train
         self.y_train = y_train

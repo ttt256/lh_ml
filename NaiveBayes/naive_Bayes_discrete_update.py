@@ -2,10 +2,23 @@ import numpy as np
 import pandas as pd
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
+import time
+
+
+# 装饰器，加日志
+def log(func):
+    def wrapper(*args, **kw):
+        start_time = time.time()
+        res = func(*args, **kw)
+        end_time = time.time()
+        print('training model cost {0} seconds'.format(end_time - start_time))
+        return res
+    return wrapper
 
 
 # 多分类的朴素贝叶斯模型（特征均为离散型变量）
 class NaiveBayesDiscrete():
+    @log
     def __init__(self, X_train, y_train, lam = 1):
         '''
         注意这里输入的X_train, y_train的类型很重要
