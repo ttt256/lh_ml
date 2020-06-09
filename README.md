@@ -68,8 +68,8 @@
 ##### note：
 1. 高斯型朴素贝叶斯的假定是特征 X 关于 Y 的条件分布是正态的，但是我并没有检验 iris 的特征是否满足条件，所以并不一定正确。
 2. 如果连续型特征服从其他分布，用其他分布的密度函数即可。
-+ ##### 数据文件&ensp;[mushrooms.txt](https://github.com/ttt256/lh_ml/blob/master/NaiveBayes/mushrooms.txt)
-+ ##### 数据文件&ensp;[SMSSpamCollection.txt](https://github.com/ttt256/lh_ml/blob/master/NaiveBayes/SMSSpamCollection.txt)
++ #### 数据文件&ensp;[mushrooms.txt](https://github.com/ttt256/lh_ml/blob/master/NaiveBayes/mushrooms.txt)
++ #### 数据文件&ensp;[SMSSpamCollection.txt](https://github.com/ttt256/lh_ml/blob/master/NaiveBayes/SMSSpamCollection.txt)
 
 ### 第五章 决策树(Decision Tree)
 + #### 代码文件&ensp;[decision_tree_ID3.py](https://github.com/ttt256/lh_ml/blob/master/DecisionTree/decision_tree_ID3.py)
@@ -77,9 +77,18 @@
 	+ 用书上的例 5.1 数据测试
 	+ 用 mushrooms dataset 来测试
 	+ 直接调用 sklearn 中的 DecisionTreeClassifier
+	
++ #### 代码文件&ensp;[decision_tree_C4.5.py](https://github.com/ttt256/lh_ml/blob/master/DecisionTree/decision_tree_C4.5.py)
+	+ 实现决策树 C4.5算法
+	+ 用书上的例 5.1 数据测试
+	+ 用 mushrooms dataset 来测试
 
-##### note：
-1. 暂时只实现了 ID3 ， C4.5 算法和 ID3 算法基本一样，加个计算特征A的熵的函数即可。
++ #### 代码文件&ensp;[gbdt.py](https://github.com/ttt256/lh_ml/blob/master/DecisionTree/gbdt.py)
+	+ 实现 GBDT ，其中的树为 CART 回归树
+	+ 对波士顿房价数据进行预测，选择均方误差 MSE 和 拟合系数 R2score 作为模型评价指标
+	
++ #### 数据文件&ensp;[boston_house_prices.csv](https://github.com/ttt256/lh_ml/blob/master/DecisionTree/boston_house_prices.csv)
+
 
 ### 第六章 逻辑斯蒂回归(Logistic Regression)和最大熵模型(Maximum Entropy Model)
 + #### 代码文件&ensp;[logistic_regression.py](https://github.com/ttt256/lh_ml/blob/master/LogisticRegression/logistic_regression.py)
@@ -101,6 +110,6 @@
 2. 比较概率生成模型和 LR （判别模型）在该数据集上的效果，分析结果不同的原因。
 3. 概率生成模型中需要计算协方差矩阵的逆，在计算逆的过程中，因为这个协方差矩阵非常接近奇异阵，就用 SVD 分解计算了伪逆。
 4. 由于SVD 分解不是唯一的，所以我和别人因为 SVD 分解的结果不一样，导致最后的结果也不一样，特征高度相关对 LR 的影响并不大，但对概率生成模型可能有影响。
-+ 数据文件&ensp;[X_train](https://github.com/ttt256/lh_ml/blob/master/LogisticRegression/X_train),
++ #### 数据文件&ensp;[X_train](https://github.com/ttt256/lh_ml/blob/master/LogisticRegression/X_train),
 [Y_train](https://github.com/ttt256/lh_ml/blob/master/LogisticRegression/Y_train),
 [X_test](https://github.com/ttt256/lh_ml/blob/master/LogisticRegression/X_test)
