@@ -72,22 +72,22 @@
 + #### 数据文件&ensp;[SMSSpamCollection.txt](https://github.com/ttt256/lh_ml/blob/master/NaiveBayes/SMSSpamCollection.txt)
 
 ### 第五章 决策树(Decision Tree)
-+ #### 代码文件&ensp;[decision_tree_ID3.py](https://github.com/ttt256/lh_ml/blob/master/DecisionTree/decision_tree_ID3.py)
++ #### 代码文件&ensp;[decision_tree_ID3.py](https://github.com/ttt256/lh_ml/blob/master/DecisionTree_and_GBDT/decision_tree_ID3.py)
 	+ 实现决策树 ID3 算法
 	+ 用书上的例 5.1 数据测试
 	+ 用 mushrooms dataset 来测试
 	+ 直接调用 sklearn 中的 DecisionTreeClassifier
 	
-+ #### 代码文件&ensp;[decision_tree_C4.5.py](https://github.com/ttt256/lh_ml/blob/master/DecisionTree/decision_tree_C4.5.py)
++ #### 代码文件&ensp;[decision_tree_C4.5.py](https://github.com/ttt256/lh_ml/blob/master/DecisionTree_and_GBDT/decision_tree_C4.5.py)
 	+ 实现决策树 C4.5算法
 	+ 用书上的例 5.1 数据测试
 	+ 用 mushrooms dataset 来测试
 
-+ #### 代码文件&ensp;[gbdt.py](https://github.com/ttt256/lh_ml/blob/master/DecisionTree/gbdt.py)
++ #### 代码文件&ensp;[gbdt.py](https://github.com/ttt256/lh_ml/blob/master/DecisionTree_and_GBDT/gbdt.py)
 	+ 实现 GBDT ，其中的树为 CART 回归树
 	+ 对波士顿房价数据进行预测，选择均方误差 MSE 和 拟合系数 R2score 作为模型评价指标
 	
-+ #### 数据文件&ensp;[boston_house_prices.csv](https://github.com/ttt256/lh_ml/blob/master/DecisionTree/boston_house_prices.csv)
++ #### 数据文件&ensp;[boston_house_prices.csv](https://github.com/ttt256/lh_ml/blob/master/DecisionTree_and_GBDT/boston_house_prices.csv)
 
 
 ### 第六章 逻辑斯蒂回归(Logistic Regression)和最大熵模型(Maximum Entropy Model)
@@ -110,6 +110,27 @@
 2. 比较概率生成模型和 LR （判别模型）在该数据集上的效果，分析结果不同的原因。
 3. 概率生成模型中需要计算协方差矩阵的逆，在计算逆的过程中，因为这个协方差矩阵非常接近奇异阵，就用 SVD 分解计算了伪逆。
 4. 由于SVD 分解不是唯一的，所以我和别人因为 SVD 分解的结果不一样，导致最后的结果也不一样，特征高度相关对 LR 的影响并不大，但对概率生成模型可能有影响。
-+ #### 数据文件&ensp;[X_train](https://github.com/ttt256/lh_ml/blob/master/LogisticRegression/X_train),
-[Y_train](https://github.com/ttt256/lh_ml/blob/master/LogisticRegression/Y_train),
-[X_test](https://github.com/ttt256/lh_ml/blob/master/LogisticRegression/X_test)
++ #### 数据文件&ensp;[X_train](https://github.com/ttt256/lh_ml/blob/master/LogisticRegression/X_train),[Y_train](https://github.com/ttt256/lh_ml/blob/master/LogisticRegression/Y_train),[X_test](https://github.com/ttt256/lh_ml/blob/master/LogisticRegression/X_test)
+
+
+### 第十章 隐马尔可夫模型(Hidden Markov Model)
++ #### 代码文件&ensp;[hmm.py](https://github.com/ttt256/lh_ml/blob/master/HMM/hmm.py)
+	+ 实现HMM模型
+	+ 用人民日报1998语料库训练模型
+	+ 对新闻和输入语句进行测试
+	
+##### note：
+1. HMM典型模型是一个五元组：
+	状态值集合：(B, M, E, S): {B:begin, M:middle, E:end, S:single}
+	观察值集合：在ord中，中文编码大小为65536，总共4个状态，所以B矩阵4x65536
+	转移概率矩阵A
+	观察概率矩阵B
+	初值状态概率向量pi
+2. 用HMM进行分词：
+	比如：小明硕士毕业于中国科学院计算所
+	输出的状态序列为：BEBEBMEBEBMEBES
+	根据这个状态序列我们可以进行切词：BE/BE/BME/BE/BME/BE/S
+	所以切词结果如下：小明/硕士/毕业于/中国/科学院/计算/所
+3. 如果句子较长，许多个较小的数值连乘，容易造成下溢。对于这种情况，我们常常使用log函数解决。对于没有出现的词语，矩阵对应的位置为0，因为log0不存在，所以我们需要给每一个0的位置加上一个极小值。
++ #### 人民日报1998语料库&ensp;[HMMTrainSet.txt](https://github.com/ttt256/lh_ml/blob/master/HMM/HMMTrainSet.txt)
++ #### 测试文章&ensp;[news.txt](https://github.com/ttt256/lh_ml/blob/master/HMM/news.txt)
